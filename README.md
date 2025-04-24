@@ -7,7 +7,7 @@ This repository contains my personal biodata page with interactive features:
 
 ## Viewing the Biodata
 
-You can view my biodata by visiting: https://yourusername.github.io/biodata
+You can view my biodata by visiting: https://arpit22052000.github.io/biodata
 
 ## Contact Information
 
