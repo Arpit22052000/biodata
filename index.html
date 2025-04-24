@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Theme variables - Classic Gold */
+            --classic-primary: #D4AF37;
+            --classic-secondary: #B8860B;
+            --classic-bg: #f5f5f5;
+            --classic-card: white;
+            --classic-text: #333;
+            --classic-border: #eaeaea;
+            --classic-accent: #FFD700;
+            
+            /* Theme variables - Modern Tech */
+            --modern-primary: #3498db;
+            --modern-secondary: #2980b9;
+            --modern-bg: #f0f4f8;
+            --modern-card: white;
+            --modern-text: #2d3748;
+            --modern-border: #e2e8f0;
+            --modern-accent: #4dc0b5;
+            
+            /* Default theme (Classic) */
+            --primary: var(--classic-primary);
+            --secondary: var(--classic-secondary);
+            --bg: var(--classic-bg);
+            --card: var(--classic-card);
+            --text: var(--classic-text);
+            --border: var(--classic-border);
+            --accent: var(--classic-accent);
+            --font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            font-family: var(--font-family);
+            color: var(--text);
+            background-color: var(--bg);
+            line-height: 1.6;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .page {
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            background-color: var(--card);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            page-break-after: always;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .header-decoration {
+            background: linear-gradient(to right, var(--primary), var(--accent), var(--primary));
+            height: 6px;
+            transition: all 0.5s ease-in-out;
+        }
+        
+        .photo-container {
+            width: 250px;
+            height: 300px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(249, 249, 249, 0.8);
+            border-radius: 6px;
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .photo-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .section-heading {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: var(--text);
+            display: inline-block;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .section-heading:after {
+            content: "";
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .detail-table {
+            width: 100%;
+        }
+        
+        .detail-table tr td:first-child {
+            font-weight: 600;
+            width: 35%;
+            color: var(--text);
+            padding-right: 15px;
+            vertical-align: top;
+            padding-bottom: 12px;
+        }
+        
+        .detail-table tr td {
+            padding-bottom: 12px;
+            vertical-align: top;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .detail-table tr:hover td {
+            color: var(--secondary);
+        }
+        
+        .ganesh-icon {
+            width: 70px;
+            height: auto;
+            margin: 0 auto 5px auto;
+            opacity: 0.9;
+            transition: all 0.3s ease-in-out;
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
+        }
+        
+        .ganesh-icon:hover {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+        
+        .om-text {
+            font-size: 18px;
+            color: var(--secondary);
+            font-weight: 600;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .decorative-line {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary), transparent);
+            margin: 8px auto;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .icon-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .icon-container:hover {
+            background-color: rgba(249, 249, 249, 0.9);
+            transform: translateX(5px);
+        }
+        
+        .icon-container i {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(245, 245, 245, 0.9);
+            color: var(--secondary);
+            border-radius: 50%;
+            margin-right: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .icon-container:hover i {
+            background-color: var(--primary);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .hobby-card {
+            background-color: rgba(249, 249, 249, 0.7);
+            border-radius: 6px;
+            padding: 16px;
+            border-left: 3px solid var(--primary);
+            margin-bottom: 15px;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-left-width: 5px;
+        }
+        
+        .hobby-card i {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .hobby-card:hover i {
+            transform: scale(1.2);
+            color: var(--primary);
+        }
+        
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 14px;
+            background-color: rgba(249, 249, 249, 0.8);
+            color: var(--text);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+        
+        .social-link:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .social-link:hover i {
+            color: white;
+        }
+        
+        .social-link i {
+            margin-right: 8px;
+            color: var(--secondary);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        /* Instagram special styling */
+        .instagram-link i {
+            background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.2rem;
+        }
+        
+        .instagram-link:hover i {
+            background: white;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        
+        @media print {
+            body {
+                background-color: white;
+            }
+            
+            .page {
+                box-shadow: none;
+                max-width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            
+            @page {
+                size: A4;
+                margin: 0.5cm;
+            }
+            
+            .theme-toggle {
+                display: none;
+            }
+        }
+        
+        /* Theme Toggle Styles */
+        .theme-toggle-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 999;
+            background-color: white;
+            border-radius: 10px;
+            padding: 10px 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle-container:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+        
+        .toggle-label {
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+        
+        .theme-toggle {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 30px;
+        }
+        
+        .theme-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--classic-primary);
+            transition: .4s;
+            border-radius: 34px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 10px;
+            font-size: 12px;
+            color: white;
+        }
+        
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .theme-toggle input:checked + .toggle-slider {
+            background-color: var(--modern-primary);
+        }
+        
+        .theme-toggle input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+                
+        /* Theme-specific styles */
+        body.modern-theme {
+            --primary: var(--modern-primary);
+            --secondary: var(--modern-secondary);
+            --bg: var(--modern-bg);
+            --card: var(--modern-card);
+            --text: var(--modern-text);
+            --border: var(--modern-border);
+            --accent: var(--modern-accent);
+            --font-family: 'Montserrat', sans-serif;
+        }
+        
+        .modern-theme .page {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        
+        .modern-theme .section-heading {
+            border-bottom: none;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary);
+            position: relative;
+        }
+        
+        .modern-theme .section-heading:after {
+            display: none;
+        }
+        
+        .modern-theme .detail-table tr td:first-child {
+            color: var(--secondary);
+        }
+        
+        .modern-theme .hobby-card {
+            background: linear-gradient(145deg, #ffffff, #f0f4f8);
+            border-left: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .modern-theme .photo-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            border: none;
+        }
+        
+        .modern-theme .icon-container i {
+            background: linear-gradient(145deg, var(--primary), var(--secondary));
+            color: white;
+        }
+        
+        .modern-theme .decorative-line {
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--primary), var(--accent), var(--primary), transparent);
+        }
+        
+        /* Photo Container Styles */
+        .photo-carousel-container {
+            margin: 0 auto;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .photo-carousel-container:hover {
+            transform: translateY(-5px);
+        }
+        
+        .drive-embed {
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .modern-theme .drive-embed {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="py-8">
+    <!-- Theme Toggle -->
+    <div class="theme-toggle-container">
+        <span class="toggle-label">Toggle Theme</span>
+        <label class="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="toggle-slider">
+                <span>Gold</span>
+                <span>Tech</span>
+            </span>
+        </label>
+    </div>
+
+    <!-- PAGE 1: PERSONAL DETAILS -->
+    <div class="page p-0 mb-8">
+        <div class="header-decoration"></div>
+        
+        <!-- Header with Ganesh Ji Icon -->
+        <div class="p-5 text-center">
+            <img src="photos/golden-ganesha-icon.png" alt="Golden Ganesha Icon" class="ganesh-icon" />
+            <h3 class="om-text mt-2">||श्री गणेशाय नमः||</h3>
+            <div class="decorative-line"></div>
+        </div>
+        
+        <!-- Personal Details with Photo -->
+        <div class="px-8 py-5 section">
+            <h2 class="text-xl font-bold section-heading">Personal Details</h2>
+            
+            <div class="mb-5 text-center">
+                <div class="photo-carousel-container mb-5" style="width: 100%; max-width: 500px;">
+                    <!-- Direct Google Drive Folder Embed -->
+                    <iframe src="https://drive.google.com/embeddedfolderview?id=1-W2Tcr87J1ojB8khR0sjTxk9B_6gBLOB#grid" 
+                        style="width: 100%; height: 350px; border: 1px solid var(--border); border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);" 
+                        frameborder="0" 
+                        class="drive-embed">
+                    </iframe>
+                    
+                    <!-- Alternative link in case embed doesn't work -->
+                    <div class="mt-3 text-sm">
+                        <a href="https://drive.google.com/drive/folders/1-W2Tcr87J1ojB8khR0sjTxk9B_6gBLOB" 
+                           target="_blank"
+                           class="text-blue-500 hover:underline">
+                            <i class="fa fa-external-link mr-1"></i> View all photos in Google Drive
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <table class="detail-table">
+                <tr>
+                    <td>Name:</td>
+                    <td>Arpit Kabra</td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td>22 May 2000</td>
+                </tr>
+                <tr>
+                    <td>Place of Birth:</td>
+                    <td>Bhilwara (Rajasthan)</td>
+                </tr>
+                <tr>
+                    <td>Complexion:</td>
+                    <td>Fair</td>
+                </tr>
+                <tr>
+                    <td>Height:</td>
+                    <td>5'11" (180 cm)</td>
+                </tr>
+                <tr>
+                    <td>Education:</td>
+                    <td>BTech in EC from Sir MVIT Banglore, Karnataka</td>
+                </tr>
+                <tr>
+                    <td>Occupation:</td>
+                    <td>Software Developer at Hashtrust Technologies, Bhilwara (Raj)</td>
+                </tr>
+                <tr>
+                    <td>Blood Group:</td>
+                    <td>B+</td>
+                </tr>
+                <tr>
+                    <td>Shankein:</td>
+                    <td>Kabra, Inani</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <!-- PAGE 2: FAMILY DETAILS -->
+    <div class="page p-0 mb-8">
+        <div class="header-decoration"></div>
+        
+        <!-- Family Details -->
+        <div class="px-8 py-5 section">
+            <h2 class="text-xl font-bold section-heading">Family Details</h2>
+            <table class="detail-table">
+                <tr>
+                    <td>Father:</td>
+                    <td>Shri Dinesh Ji Kabra (Manager at Balaji Enterprises, Tumkur)</td>
+                </tr>
+                <tr>
+                    <td>Mother:</td>
+                    <td>Smt. Seema Kabra (Housewife)</td>
+                </tr>
+                <tr>
+                    <td>Younger Brother:</td>
+                    <td>Shri Harshit Ji Kabra (Pursuing Btech in Computer Science)</td>
+                </tr>
+                <tr>
+                    <td>Grand Father:</td>
+                    <td>Late Shri Bhanwar lal Ji Kabra</td>
+                </tr>
+                <tr>
+                    <td>Grand Mother:</td>
+                    <td>Late Smt. Santok Devi Kabra</td>
+                </tr>
+                <tr>
+                    <td>TauJi:</td>
+                    <td>Shri Satyanarayan Ji Kabra (Amargarh, Bhilwara)</td>
+                </tr>
+                <tr>
+                    <td>Uncle:</td>
+                    <td>Shri Om Prakash Ji Kabra (Amargarh, Bhilwara)</td>
+                </tr>
+                <tr>
+                    <td>Maternal Grand Father:</td>
+                    <td>Shri Nand Lal Ji Inani (Mandal, Bhilwara)</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <!-- PAGE 3: CONTACT & HOBBIES -->
+    <div class="page p-0">
+        <div class="header-decoration"></div>
+        
+        <!-- Contact Details -->
+        <div class="px-8 py-5 section">
+            <h2 class="text-xl font-bold section-heading">Contact Details</h2>
+            <div class="bg-gray-50 p-5 rounded-lg border border-gray-100">
+                <div class="icon-container">
+                    <i class="fa fa-phone"></i>
+                    <div>
+                        <p class="text-sm text-gray-500">Father</p>
+                        <p>+91 9448742310</p>
+                        <p>+91 9829386470</p>
+                    </div>
+                </div>
+                <div class="icon-container">
+                    <i class="fa fa-home"></i>
+                    <div>
+                        <p class="text-sm text-gray-500">Residential Address</p>
+                        <p>9-I-27 R.C. Vyas Colony, Bhilwara (Rajasthan)</p>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <a href="https://www.instagram.com/arpitkabramaheshwari/" target="_blank" class="social-link instagram-link">
+                        <i class="fab fa-instagram"></i> @arpitkabramaheshwari
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Hobbies & Interests -->
+        <div class="px-8 py-5 section">
+            <h2 class="text-xl font-bold section-heading">Hobbies & Interests</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="hobby-card">
+                    <i class="fa fa-cutlery"></i>
+                    <h3 class="font-medium mb-1">Cooking Dishes</h3>
+                    <p class="text-sm text-gray-600">Exploring diverse cuisines and preparing delicious meals</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fa fa-music"></i>
+                    <h3 class="font-medium mb-1">Listening Music</h3>
+                    <p class="text-sm text-gray-600">Enjoying various genres and discovering new artists</p>
+                </div>
+                <div class="hobby-card">
+                    <i class="fa fa-laptop"></i>
+                    <h3 class="font-medium mb-1">Learning Technology</h3>
+                    <p class="text-sm text-gray-600">Staying updated with latest tech trends and advancements</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="flex items-center mb-2">
+                        <i class="fa fa-futbol-o mr-3"></i>
+                        <i class="fa fa-trophy"></i>
+                    </div>
+                    <h3 class="font-medium mb-1">Sports</h3>
+                    <p class="text-sm text-gray-600">Playing cricket and badminton regularly to stay active and fit</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="px-8 py-5 text-center text-gray-500 text-sm">
+            <div class="decorative-line mb-3"></div>
+        </div>
+    </div>
+    
+    <!-- Theme Toggle JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('biodata-theme');
+            if (savedTheme === 'modern') {
+                body.classList.add('modern-theme');
+                themeToggle.checked = true;
+            }
+            
+            // Toggle theme on checkbox change
+            themeToggle.addEventListener('change', function() {
+                if (this.checked) {
+                    body.classList.add('modern-theme');
+                    localStorage.setItem('biodata-theme', 'modern');
+                    
+                    // Add smooth transition animation
+                    body.style.opacity = '0';
+                    setTimeout(() => {
+                        body.style.opacity = '1';
+                    }, 300);
+                } else {
+                    body.classList.remove('modern-theme');
+                    localStorage.setItem('biodata-theme', 'classic');
+                    
+                    // Add smooth transition animation
+                    body.style.opacity = '0';
+                    setTimeout(() => {
+                        body.style.opacity = '1';
+                    }, 300);
+                }
+            });
+            
+            // Add hover effects to table rows
+            const tableRows = document.querySelectorAll('.detail-table tr');
+            tableRows.forEach(row => {
+                row.addEventListener('mouseenter', () => {
+                    row.style.transition = 'all 0.3s ease';
+                    row.style.backgroundColor = body.classList.contains('modern-theme') ? 
+                        'rgba(52, 152, 219, 0.05)' : 'rgba(212, 175, 55, 0.05)';
+                });
+                
+                row.addEventListener('mouseleave', () => {
+                    row.style.backgroundColor = 'transparent';
+                });
+            });
+            
+            // Apply theme to Google Drive embed iframe
+            const driveEmbed = document.querySelector('.drive-embed');
+            if (driveEmbed) {
+                // Update iframe border color based on theme
+                const updateEmbedStyle = () => {
+                    const borderColor = body.classList.contains('modern-theme') ? 
+                        'var(--modern-border)' : 'var(--border)';
+                    driveEmbed.style.borderColor = borderColor;
+                    
+                    const shadowColor = body.classList.contains('modern-theme') ? 
+                        'rgba(52, 152, 219, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+                    driveEmbed.style.boxShadow = `0 2px 8px ${shadowColor}`;
+                };
+                
+                // Apply initial style
+                updateEmbedStyle();
+                
+                // Update when theme changes
+                themeToggle.addEventListener('change', updateEmbedStyle);
+            }
+        });
+    </script>
+</body>
+</html> 
