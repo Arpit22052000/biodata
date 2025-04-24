@@ -487,6 +487,39 @@
             border-radius: 10px;
         }
         
+        /* Phone links styling */
+        a[href^="tel:"] {
+            text-decoration: none;
+            color: inherit;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        a[href^="tel:"]:hover {
+            color: var(--primary);
+            transform: translateX(3px);
+        }
+        
+        a[href^="tel:"]:active {
+            transform: translateX(3px) scale(0.98);
+        }
+        
+        a[href^="tel:"]::before {
+            content: "\f095";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 5px;
+            font-size: 0.8em;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        a[href^="tel:"]:hover::before {
+            opacity: 1;
+            margin-right: 8px;
+        }
+        
         /* Ensure desktop view on mobile */
         @media screen and (max-width: 1023px) {
             html, body {
@@ -654,8 +687,8 @@
                     <i class="fa fa-phone"></i>
                     <div>
                         <p class="text-sm text-gray-500">Father</p>
-                        <p>+91 9448742310</p>
-                        <p>+91 9829386470</p>
+                        <p><a href="tel:+919448742310" class="hover:text-primary transition-colors">+91 9448742310</a></p>
+                        <p><a href="tel:+919829386470" class="hover:text-primary transition-colors">+91 9829386470</a></p>
                     </div>
                 </div>
                 <div class="icon-container">
