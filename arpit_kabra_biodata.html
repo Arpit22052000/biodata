@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1024, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -443,6 +443,24 @@
         
         .modern-theme .drive-embed {
             border-radius: 10px;
+        }
+        
+        /* Ensure desktop view on mobile */
+        @media screen and (max-width: 1023px) {
+            html, body {
+                min-width: 1024px;
+                overflow-x: auto;
+            }
+            
+            body {
+                zoom: 0.8; /* For browsers that support it */
+                -moz-transform: scale(0.8); /* Firefox */
+                -moz-transform-origin: 0 0;
+                -o-transform: scale(0.8); /* Opera */
+                -o-transform-origin: 0 0;
+                -webkit-transform: scale(0.8); /* Safari and Chrome */
+                -webkit-transform-origin: 0 0;
+            }
         }
     </style>
 </head>
