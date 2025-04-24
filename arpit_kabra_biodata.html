@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=1024, initial-scale=1.0">
+    <meta name="viewport" content="width=1024, initial-scale=0.6, maximum-scale=1.0, user-scalable=yes">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -134,11 +134,53 @@
             opacity: 0.9;
             transition: all 0.3s ease-in-out;
             filter: drop-shadow(0 2px 3px rgba(0,0,0,0.1));
+            position: relative;
+            z-index: 1;
         }
         
         .ganesh-icon:hover {
             transform: scale(1.05);
             opacity: 1;
+        }
+        
+        /* Ganesha Light Effect */
+        .divine-light {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,215,0,0.8) 0%, rgba(255,215,0,0) 70%);
+            border-radius: 50%;
+            z-index: 0;
+            animation: divine-glow 2s infinite alternate;
+        }
+        
+        @keyframes divine-glow {
+            0% {
+                opacity: 0.4;
+                box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.3);
+            }
+            100% {
+                opacity: 0.9;
+                box-shadow: 0 0 20px 10px rgba(255, 215, 0, 0.7);
+            }
+        }
+        
+        .modern-theme .divine-light {
+            background: radial-gradient(circle, rgba(52,152,219,0.8) 0%, rgba(52,152,219,0) 70%);
+        }
+        
+        @keyframes modern-divine-glow {
+            0% {
+                opacity: 0.4;
+                box-shadow: 0 0 10px 5px rgba(52, 152, 219, 0.3);
+            }
+            100% {
+                opacity: 0.9;
+                box-shadow: 0 0 20px 10px rgba(52, 152, 219, 0.7);
+            }
         }
         
         .om-text {
@@ -453,12 +495,12 @@
             }
             
             body {
-                zoom: 0.8; /* For browsers that support it */
-                -moz-transform: scale(0.8); /* Firefox */
+                zoom: 0.6; /* For browsers that support it */
+                -moz-transform: scale(0.6); /* Firefox */
                 -moz-transform-origin: 0 0;
-                -o-transform: scale(0.8); /* Opera */
+                -o-transform: scale(0.6); /* Opera */
                 -o-transform-origin: 0 0;
-                -webkit-transform: scale(0.8); /* Safari and Chrome */
+                -webkit-transform: scale(0.6); /* Safari and Chrome */
                 -webkit-transform-origin: 0 0;
             }
         }
@@ -483,7 +525,10 @@
         
         <!-- Header with Ganesh Ji Icon -->
         <div class="p-5 text-center">
-            <img src="photos/golden-ganesha-icon.png" alt="Golden Ganesha Icon" class="ganesh-icon" />
+            <div class="relative inline-block">
+                <div class="divine-light"></div>
+                <img src="photos/golden-ganesha-icon.png" alt="Golden Ganesha Icon" class="ganesh-icon" />
+            </div>
             <h3 class="om-text mt-2">||श्री गणेशाय नमः||</h3>
             <div class="decorative-line"></div>
         </div>
